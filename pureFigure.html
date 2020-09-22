@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="./css/micro-switch.css">
 </head>
 
-<body class="body">
+<body>
 <section class="section-imageText">
   <div class="top d-flex justify-content-between align-items-center">
     <div class="return mui-icon mui-icon-arrowleft"></div>
@@ -27,56 +27,95 @@
       <div class="user-name">user name</div>
     </div>
     <div class="share mui-icon mui-icon-redo"></div>
-    <div class="icon-change d-flex align-items-center">
-      <button class="the_refresh">
-        <span>Change</span>
-        <i class="mui-icon mui-icon-reload"></i>
-      </button>
-    </div>
   </div>
   <div class="image-content">
-    <h2>Title</h2>
-    <img src="./img/timg%201.jpeg" alt="">
-    <img src="./img/timg%201.jpeg" alt="">
-    <img src="./img/timg%201.jpeg" alt="">
-    <img src="./img/timg%201.jpeg" alt="">
+    <div>
+      <h2>Title</h2>
+      <img src="./img/timg%201.jpeg" alt="">
+      <img src="./img/timg%201.jpeg" alt="">
+    </div>
+    <div class="not_shown">
+      <img src="./img/404.png" alt="">
+    </div>
   </div>
-<!--  <button class="more">More</button>-->
   <div class="share-list-popup">
     <div class="d-flex share-con justify-content-between align-items-center">
       <li class="whatsapp-box">
         <a style="margin-top: .15rem;" href="javascript:whatsApp();" class="xq-whatsapp" data-action="share/whatsapp/share">
           <img src="./img/whatsapp.svg" alt="">
-          <span>WhatsApp</span>
         </a>
       </li>
       <li class="facebook-box">
         <a href="javascript:fbShare();" class="xq-facebook">
           <img src="./img/Facebook.svg" alt="">
-          <span>Facebook</span>
         </a>
+      </li>
+      <li class="copy-to-clip" onclick="copyToClip('11111')">
+        <img src="./img/copy.png" alt="">
       </li>
     </div>
     <div class="share-cancel">Cancel</div>
   </div>
   <div class="share-popup">
-    <div class="subtit d-flex justify-content-between align-items-center">
-      <i></i>
-      <span>Share it with your friends</span>
-      <i></i>
+    <div class="subtit">
+      <p>It's a pity watch such wonderful content alone</p>
+      <img src="./img/arrowhead.png" alt="">
     </div>
-    <div class="share-btn mui-btn mui-btn-outlined">Share</div>
   </div>
   <div class="advertising-box">
     <div class="bottom-advertising">
       <img class="advertising-img" src="./img/Artwork.png" alt="">
       <div class="advertising-title">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin g</p>
-        <button><a href="https://www.baidu.com">BUTTON</a></button>
+        <h6>fair rummy,real cash <img src="./img/hand.png" alt=""></h6>
+        <p>Lorem ipsum dolor sit ametscing elit.</p>
       </div>
     </div>
   </div>
+  <div class="fx_sidebar">
+    <ul>
+      <li class="fx_button">
+        <img src="./img/share.png" alt="">
+        <p>Share</p>
+      </li>
+      <li class="whatsapp-box">
+        <a style="margin-top: .15rem;" href="javascript:whatsApp();" class="xq-whatsapp" data-action="share/whatsapp/share">
+          <img src="./img/whatsapp.png" alt="">
+        </a>
+      </li>
+      <li class="facebook-box">
+        <a href="javascript:fbShare();" class="xq-facebook">
+          <img src="./img/faceboox.png" alt="">
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src="./img/refresh.png" alt="">
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="whatsapp_group_chat">
+    <a href="#">
+      <img src="./img/logo.png" class="group_chat_img" alt="">
+      <div class="wg_chat_content">
+        <h6>join us whatsapp</h6>
+        <p>Lorem ipsum dolor sit amet, co</p>
+      </div>
+      <img src="./img/join_whats.png" alt="" class="join_group_chat">
+    </a>
+  </div>
 </section>
+<!--自定义弹出层-->
+<div class="fx_popover_box">
+  <div class="fx_popover">
+    <div class="popover_content">
+      <div class="fx_popover_close"><img src="./img/close.png" alt=""></div>
+      <div class="fx_popover_hint"><img src="./img/lamp_bulb.png" alt=""></div>
+      <p>Share with your friends <br>See that's next</p>
+      <button class="fx_popover_btn">Share</button>
+    </div>
+  </div>
+</div>
 <script src="./js/jquery-3.3.1.min.js"></script>
 <script src="./js/mui.min.js"></script>
 <script src="./js/md5.js"></script>
@@ -94,25 +133,62 @@
     t = document.getElementsByClassName("share_title")[0].content;
     location="whatsapp://send?text="+ encodeURIComponent(t) + encodeURIComponent(u)+"&via=lopscoop";
   }
-  $('.more').click(function(){
-    $('.image-content').css('height','auto')
+  /**
+   * 复制内容到粘贴板
+   */
+  function copyToClip(content, message) {
+    var aux = document.createElement("input");
+    aux.setAttribute("value", content);
+    document.body.appendChild(aux);
+    aux.select();
+    document.execCommand("copy");
+    document.body.removeChild(aux);
+    if (message == null) {
+      mui.toast('Copied');
+      $('.share-list-popup').css('display','none')
+    } else{
+      mui.toast(message);
+    }
+  }
+  // 打开提示分享弹窗
+  $('.subtit').click(function (){
+    $('.fx_popover_box').css('display','block')
   })
-  $('.share,.share-btn').click(function (){
+  // 关闭提示分享弹窗
+  $('.fx_popover_close').click(function (){
+    $('.fx_popover_box').css('display','none')
+  })
+  //打开底部分享框
+  $('.share,.fx_popover_btn,.fx_button').click(function (){
     $('.share-list-popup').css('display','block')
   })
   // whatsapp分享隐藏跳转
   $('.whatsapp-box').click(function (){
+    // 底部分享框隐藏
     $('.share-list-popup').css('display','none')
-    $('.body').css('overflow','scroll')
+    // 分享以后弹窗隐藏
+    $('.fx_popover_box').css('display','none')
+    // 底部提示框
+    $('.share-popup').css('display','none')
+    // 分享以后可以观看更多
+    $('.not_shown').css('display','block')
     setTimeout(function (){
+      // 顶部出现广告
       $('.advertising-box').css('display','block')
     },1000)
   })
   // facebook分享隐藏跳转
   $('.facebook-box').click(function (){
+    // 底部分享框隐藏
     $('.share-list-popup').css('display','none')
-    $('.body').css('overflow','scroll')
+    // 分享以后弹窗隐藏
+    $('.fx_popover_box').css('display','none')
+    // 底部提示框
+    $('.share-popup').css('display','none')
+    // 分享以后可以观看更多
+    $('.not_shown').css('display','block')
     setTimeout(function (){
+      // 顶部出现广告
       $('.advertising-box').css('display','block')
     },1000)
   })

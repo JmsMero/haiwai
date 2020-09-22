@@ -129,18 +129,18 @@ body{
     color: #fff;
 }
 .share-popup{
-    width: 100%;
+    width: 7.5rem;
     background-color: rgba(255,255,255,.9);
-    position: fixed;
-    bottom: 0;
+    position: absolute;
+    bottom: -1rem;
     left: 0;
     padding: .6rem .4rem .2rem;
     display: block;
     /*box-shadow: 4px -.2rem .8rem .6rem #fff;*/
-    z-index: 99;
+    z-index: 100;
 }
-.tit img{
-    width: .4rem;
+.subtit img{
+    width: .4rem!important;
     height: .4rem;
 }
 .share-popup .tit{
@@ -251,7 +251,7 @@ body{
 .advertising-title img{
     position: absolute;
     top: 0;
-    left: 4.2rem;
+    right: .1rem;
     width: .76rem;
     height: .76rem;
 }
@@ -340,7 +340,7 @@ body{
 /*纯图模式*/
 .image-content{
     padding: .4rem;
-    overflow: hidden;
+    position: relative;
 }
 .image-content img{
     width: 100%;

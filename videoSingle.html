@@ -164,6 +164,14 @@
       $('.advertising-box').css('display','block')
     },1000)
   })
+  $('.fx_popover_btn').click(function (){
+    $('.fx_popover_box').css('display','none')
+    setTimeout(function (){
+      // 底部提示框
+      $('.share-popup').css('display','none')
+      $('.not_shown').css('display','block')
+    },5000)
+  })
   $('.share-btn').click(function (){
     $('.fx_popover_box').css('display','block')
     $('.share-list-popup').css('display','block')

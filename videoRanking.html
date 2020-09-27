@@ -217,7 +217,14 @@
       }
     });
   }
-
+  $('.fx_popover_btn').click(function (){
+    $('.fx_popover_box').css('display','none')
+    setTimeout(function (){
+      // 底部提示框
+      $('.share-popup').css('display','none')
+      $('.not_shown').css('display','block')
+    },5000)
+  })
   // 分享到whatsapp
   function whatsApp(contentId) {
     //设置 分享出去内容

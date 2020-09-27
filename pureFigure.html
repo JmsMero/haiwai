@@ -61,6 +61,12 @@
   </div>
   <div class="fx_sidebar">
     <ul>
+      <li class="fx_button">
+        <a style="margin-top: .15rem;" href="javascript:whatsApp();" class="xq-whatsapp" data-action="share/whatsapp/share">
+          <img src="./img/share.png" alt="">
+          <p>Share</p>
+        </a>
+      </li>
       <li class="whatsapp-box">
         <a style="margin-top: .15rem;" href="javascript:whatsApp();" class="xq-whatsapp" data-action="share/whatsapp/share">
           <img src="./img/whatsapp.png" alt="">
@@ -103,34 +109,11 @@
 <script src="./js/mui.min.js"></script>
 <script src="./js/md5.js"></script>
 <script>
-  // 分享到facebook
-  function fbShare(contentId) {
-    u = document.getElementsByClassName("share_url")[0].content;
-    t = document.getElementsByClassName("share_title")[0].content;
-    window.open("http://www.facebook.com/sharer.php?app_id=532797524073872&u="+ encodeURIComponent(u) + "&t="+ encodeURIComponent(t), "sharer","toolbar=0,status=0,width=626,height=436");
-    // "sharer","toolbar=0,status=0,width=626,height=436" 设定分享窗口视图高度
-  }
   // 分享到whatsapp
   function whatsApp(contentId){
     u = document.getElementsByClassName("share_url")[0].content;
     t = document.getElementsByClassName("share_title")[0].content;
     location="whatsapp://send?text="+ encodeURIComponent(t) + encodeURIComponent(u)+"&via=lopscoop";
-  }
-  /**
-   * 复制内容到粘贴板
-   */
-  function copyToClip(content, message) {
-    var aux = document.createElement("input");
-    aux.setAttribute("value", content);
-    document.body.appendChild(aux);
-    aux.select();
-    document.execCommand("copy");
-    document.body.removeChild(aux);
-    if (message == null) {
-      mui.toast('Copied');
-    } else{
-      mui.toast(message);
-    }
   }
   // 打开提示分享弹窗
   $('.subtit').click(function (){
@@ -140,8 +123,16 @@
   $('.fx_popover_close').click(function (){
     $('.fx_popover_box').css('display','none')
   })
+  $('.fx_popover_btn').click(function (){
+    $('.fx_popover_box').css('display','none')
+    setTimeout(function (){
+      // 底部提示框
+      $('.share-popup').css('display','none')
+      $('.not_shown').css('display','block')
+    },5000)
+  })
   // whatsapp分享隐藏跳转
-  $('.whatsapp-box').click(function (){
+  $('.whatsapp-box,.fx_button,.xq-whatsapp').click(function (){
     // 分享以后弹窗隐藏
     $('.fx_popover_box').css('display','none')
     // 分享以后可以观看更多

@@ -51,7 +51,6 @@
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin g</p>
       <img src="./img/timg.jpeg" alt="">
     </div>
-    <button class="more">More</button>
     <div class="not_shown">
       <p>
         分享加载部分
@@ -60,6 +59,7 @@
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin g</p>
       <img src="./img/timg.jpeg" alt="">
     </div>
+    <button class="more">More</button>
   </div>
   <div class="share-list-popup">
     <div class="d-flex share-con justify-content-between align-items-center">
@@ -80,13 +80,15 @@
     <div class="share-cancel">Cancel</div>
   </div>
   <div class="advertising-box">
-    <div class="bottom-advertising">
-      <img class="advertising-img" src="./img/Artwork.png" alt="">
-      <div class="advertising-title">
-        <h6>fair rummy,real cash <img src="./img/hand.png" alt=""></h6>
-        <p>Lorem ipsum dolor sit ametscing elit.</p>
+    <a href="#">
+      <div class="bottom-advertising">
+        <img class="advertising-img" src="./img/Artwork.png" alt="">
+        <div class="advertising-title">
+          <h6>fair rummy,real cash <img src="./img/hand.png" alt=""></h6>
+          <p>Lorem ipsum dolor sit ametscing elit.</p>
+        </div>
       </div>
-    </div>
+    </a>
   </div>
   <div class="fx_sidebar">
     <ul>
@@ -157,11 +159,6 @@
       mui.toast(message);
     }
   }
-  // 点击more显示更多
-  $('.more').click(function (){
-    $('.not_shown').css('display','block');
-    $('.more').css('display','none');
-  })
   $('.share,.share-btn,.fx_button').click(function (){
     $('.share-list-popup').css('display','block')
   })
@@ -171,6 +168,9 @@
     $('.share-popup').css('display','none')
     $('.body').css('overflow','scroll')
     setTimeout(function (){
+      $('.not_shown').css('display','block');
+    },5000)
+    setTimeout(function (){
       $('.advertising-box').css('display','block')
     },1000)
   })
@@ -179,6 +179,9 @@
     $('.share-list-popup').css('display','none')
     $('.share-popup').css('display','none')
     $('.body').css('overflow','scroll')
+    setTimeout(function (){
+      $('.not_shown').css('display','block');
+    },5000)
     setTimeout(function (){
       $('.advertising-box').css('display','block')
     },1000)

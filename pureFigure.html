@@ -43,6 +43,7 @@
     <div class="not_shown">
       <img src="./img/404.png" alt="">
     </div>
+    <button class="more">More</button>
   </div>
   <div class="share-list-popup">
     <div class="d-flex share-con justify-content-between align-items-center">
@@ -64,13 +65,15 @@
   </div>
 
   <div class="advertising-box">
-    <div class="bottom-advertising">
-      <img class="advertising-img" src="./img/Artwork.png" alt="">
-      <div class="advertising-title">
-        <h6>fair rummy,real cash <img src="./img/hand.png" alt=""></h6>
-        <p>Lorem ipsum dolor sit ametscing elit.</p>
+    <a href="#">
+      <div class="bottom-advertising">
+        <img class="advertising-img" src="./img/Artwork.png" alt="">
+        <div class="advertising-title">
+          <h6>fair rummy,real cash <img src="./img/hand.png" alt=""></h6>
+          <p>Lorem ipsum dolor sit ametscing elit.</p>
+        </div>
       </div>
-    </div>
+    </a>
   </div>
   <div class="fx_sidebar">
     <ul>
@@ -172,7 +175,9 @@
     // 底部提示框
     $('.share-popup').css('display','none')
     // 分享以后可以观看更多
-    $('.not_shown').css('display','block')
+    setTimeout(function (){
+      $('.not_shown').css('display','block')
+    },5000)
     setTimeout(function (){
       // 顶部出现广告
       $('.advertising-box').css('display','block')
@@ -187,7 +192,9 @@
     // 底部提示框
     $('.share-popup').css('display','none')
     // 分享以后可以观看更多
-    $('.not_shown').css('display','block')
+    setTimeout(function (){
+      $('.not_shown').css('display','block')
+    },5000)
     setTimeout(function (){
       // 顶部出现广告
       $('.advertising-box').css('display','block')

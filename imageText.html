@@ -27,7 +27,9 @@
       </div>
       <div class="user-name">user name</div>
     </div>
-    <div class="share mui-icon mui-icon-redo"></div>
+    <a style="margin-top: .15rem;" href="javascript:whatsApp();" class="xq-whatsapp" data-action="share/whatsapp/share">
+      <div class="share mui-icon mui-icon-redo"></div>
+    </a>
   </div>
   <div class="imageText-content">
     <h2>Title</h2>
@@ -53,24 +55,6 @@
     </div>
     <button class="more">More</button>
   </div>
-  <div class="share-list-popup">
-    <div class="d-flex share-con justify-content-between align-items-center">
-      <li class="whatsapp-box">
-        <a style="margin-top: .15rem;" href="javascript:whatsApp();" class="xq-whatsapp" data-action="share/whatsapp/share">
-          <img src="./img/whatsapp.svg" alt="">
-        </a>
-      </li>
-      <li class="facebook-box">
-        <a href="javascript:fbShare();" class="xq-facebook">
-          <img src="./img/Facebook.svg" alt="">
-        </a>
-      </li>
-      <li class="copy-to-clip" onclick="copyToClip('11111')">
-          <img src="./img/copy.png" alt="">
-      </li>
-    </div>
-    <div class="share-cancel">Cancel</div>
-  </div>
   <div class="advertising-box">
     <a href="#">
       <div class="bottom-advertising">
@@ -85,17 +69,14 @@
   <div class="fx_sidebar">
     <ul>
       <li class="fx_button">
-        <img src="./img/share.png" alt="">
-        <p>Share</p>
+        <a style="margin-top: .15rem;" href="javascript:whatsApp();" class="xq-whatsapp" data-action="share/whatsapp/share">
+          <img src="./img/share.png" alt="">
+          <p>Share</p>
+        </a>
       </li>
       <li class="whatsapp-box">
         <a style="margin-top: .15rem;" href="javascript:whatsApp();" class="xq-whatsapp" data-action="share/whatsapp/share">
           <img src="./img/whatsapp.png" alt="">
-        </a>
-      </li>
-      <li class="facebook-box">
-        <a href="javascript:fbShare();" class="xq-facebook">
-          <img src="./img/faceboox.png" alt="">
         </a>
       </li>
       <li>
@@ -134,47 +115,16 @@
     t = document.getElementsByClassName("share_title")[0].content;
     location="whatsapp://send?text="+ encodeURIComponent(t) + encodeURIComponent(u)+"&via=lopscoop";
   }
-  /**
-   * 复制内容到粘贴板
-   */
-  function copyToClip(content, message) {
-    var aux = document.createElement("input");
-    aux.setAttribute("value", content);
-    document.body.appendChild(aux);
-    aux.select();
-    document.execCommand("copy");
-    document.body.removeChild(aux);
-    if (message == null) {
-      mui.toast('Copied');
-      $('.share-list-popup').css('display','none')
-    } else{
-      mui.toast(message);
-    }
-  }
   $('.share,.share-btn,.fx_button').click(function (){
     $('.share-list-popup').css('display','block')
   })
   // whatsapp分享隐藏跳转
-  $('.whatsapp-box').click(function (){
-    $('.share-list-popup').css('display','none')
+  $('.whatsapp-box,.fx_button,.xq-whatsapp').click(function (){
     $('.share-popup').css('display','none')
     $('.body').css('overflow','scroll')
     setTimeout(function (){
       $('.advertising-box').css('display','block')
     },1000)
-  })
-  // facebook分享隐藏跳转
-  $('.facebook-box').click(function (){
-    $('.share-list-popup').css('display','none')
-    $('.share-popup').css('display','none')
-    $('.body').css('overflow','scroll')
-    setTimeout(function (){
-      $('.advertising-box').css('display','block')
-    },1000)
-  })
-  //取消分享
-  $('.share-cancel').click(function (){
-    $('.share-list-popup').css('display','none')
   })
 </script>
 </body>

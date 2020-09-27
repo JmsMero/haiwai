@@ -473,6 +473,7 @@ body{
 .popover_content .fx_popover_btn{
     border: 0;
     background-color: #F54B5E;
+    color: #fff;
 }
 .popover_content .fx_popover_btn a{
     color: #fff;

@@ -196,12 +196,16 @@ body{
     background-color: #bca9a9;
     position: fixed;
     top: .88rem;
-    left: 0;
     padding: .1rem .2rem;
     display: flex;
     align-items: center;     /* 垂直居中 */
     left: 50%;
     transform: translateX(-50%);
+}
+.placeholder_div{
+    height: 1rem;
+    width: 100%;
+    display: none;
 }
 .advertising-img{
     width: 1rem;
